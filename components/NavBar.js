@@ -23,7 +23,7 @@ export default function NavBar() {
               className="btn btn-ghost text-xl hover:bg-blue-500 hover:text-white"
               href="leaderboard"
             >
-              Leaderboard
+              Classement
             </a>
           </div>
         </div>
