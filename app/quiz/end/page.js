@@ -33,7 +33,7 @@ export default function Page() {
       const data = await response.json();
       console.log("Réponse de l'API:", data);
       if (data.result) {
-        router.push("/");
+        router.push("/leaderboard");
       } else {
         alert("Une erreur est survenue lors de l'enregistrement du score");
       }

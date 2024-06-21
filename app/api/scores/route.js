@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
 
 // Récupération des variables d'environnement
-const BASE_ID = process.env.NEXT_PUBLIC_AIRTABLE_BASE_ID;
+const BASE_ID = process.env.NEXT_AIRTABLE_BASE_ID;
 const TABLE_NAME = "datascore";
 const VIEW_NAME = "score";
-const API_TOKEN = process.env.NEXT_PUBLIC_AIRTABLE_API_KEY;
+const API_TOKEN = process.env.NEXT_AIRTABLE_TOKEN;
 
 const BASE_URL = `https://api.airtable.com/v0/${BASE_ID}/${TABLE_NAME}`;
 
