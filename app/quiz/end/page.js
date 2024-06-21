@@ -19,7 +19,6 @@ export default function Page() {
       pseudo: pseudoRef.current.value,
       score,
       category,
-      date: new Date().toISOString(), // Ajout de la date actuelle
     };
     console.log("Payload envoyé:", payload);
     try {
