@@ -1,3 +1,5 @@
+"use client"; // Ajoutez cette ligne en haut du fichier
+
 import { useEffect, useState } from "react";
 
 export default function Leaderboard() {
@@ -51,9 +53,8 @@ export default function Leaderboard() {
                 data.map((player, i) => (
                   <tr
                     key={player.id}
-                    className={`font-medium ${
-                      i % 2 === 0 ? "bg-primary/10" : ""
-                    }`}
+                    className={`font-medium ${i % 2 === 0 ? "bg-primary/10" : ""
+                      }`}
                   >
                     <td>{player.fields.pseudo}</td>
                     <td>{player.fields.score}</td>
