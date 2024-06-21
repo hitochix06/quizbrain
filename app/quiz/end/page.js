@@ -19,6 +19,7 @@ export default function Page() {
       pseudo: pseudoRef.current.value,
       score,
       category,
+      date: new Date().toISOString(), // Ajout de la date actuelle
     };
     console.log("Payload envoyé:", payload);
     try {
@@ -65,7 +66,7 @@ export default function Page() {
           maxLength="20"
           ref={pseudoRef}
         />
-        <span
+        <button
           className={`btn btn-primary w-32 ${sending ? "btn-disabled" : ""}`}
           onClick={saveScore}
         >
@@ -74,7 +75,7 @@ export default function Page() {
           ) : (
             "M'enregistrer"
           )}
-        </span>
+        </button>
       </label>
       <img
         className="mix-blend-multiply max-h-[400px]"
