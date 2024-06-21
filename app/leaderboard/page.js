@@ -33,7 +33,7 @@ export default function Leaderboard() {
   return (
     <div className="grow flex flex-col gap-10 items-center mt-10 lg:mt-0 lg:justify-center max-w-screen-lg w-full m-auto px-4">
       <h1 className="lg:-mt-14 text-center">
-        Voici la crème de la <span className="outlined">crème</span>
+        Voici le meilleur<span className="outlined">Classement</span>
       </h1>
       {error ? (
         <p className="text-red-500">Erreur: {error}</p>

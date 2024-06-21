@@ -9,11 +9,9 @@
 }
 
 @layer components {
-
   h1 {
-      @apply text-3xl font-bold tracking-tight text-base-content sm:text-4xl lg:text-5xl mt-8 md:mt-0;
+    @apply text-3xl font-bold tracking-tight text-base-content sm:text-4xl lg:text-5xl mt-8 md:mt-0;
   }
-
 }
 
 .outlined {
@@ -40,7 +38,7 @@
   --tw-ring-color: oklch(0.64 0.18 259.69);
 }
 
-.badge-primary{
+.badge-primary {
   background-color: #2a55d6;
   border-radius: 5%;
 }
@@ -52,4 +50,16 @@
 
 .badge-score {
   color: #3b82f6;
+}
+
+.border-primary {
+  border-color: #3b82f6;
+}
+
+.text-primary {
+  color: #3b82f6;
+}
+
+.bg-primary\/10 {
+  background-color: #3b83f64b;
 }
