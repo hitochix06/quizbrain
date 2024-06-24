@@ -7,17 +7,18 @@ module.exports = {
   ],
   theme: {
     extend: {
+      animation: {
+        slideInFromLeft: "slideInFromLeft 0.5s ease-out forwards",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       animation: {
-        'pulse-slow': 'pulse 5s infinite',
+        "pulse-slow": "pulse 5s infinite",
       },
     },
   },
-  plugins: [
-    require('daisyui'),
-  ],
+  plugins: [require("daisyui")],
 };

@@ -8,12 +8,9 @@ export default function CategoryCard({ name, index, slug, emoji }) {
   return (
     <motion.div
       key={slug} // Clé unique pour chaque élément basé sur le slug
-      initial={{ opacity: 0, scale: 0.6 }} // États initiaux de l'animation : opacité à 0 et échelle à 0.6
-      animate={{ opacity: 1, scale: 1 }} // États d'animation : opacité à 1 et échelle à 1
-      transition={{
-        duration: 0.5, // Durée de l'animation de 0.5 secondes
-        delay: Number("0." + index), // Délai basé sur l'index, converti en nombre
-      }}
+      initial={{ x: -100, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      transition={{ duration: 0.5, delay: index * 0.5 }} // Ajout d'un délai basé sur l'index
     >
       {/* Utilisation de Link pour la navigation vers la page du quiz correspondant au slug */}
       <Link href={`/quiz/${slug}`} className="card">
