@@ -60,7 +60,7 @@ export default function Page({ params }) {
 
   return (
     <div
-      className="col-span-12 lg:col-span-8 p-4 lg:px-24 flex flex-col justify-between bg-cover bg-center"
+      className="col-span-12 lg:col-span-8 p-4 lg:px-24 flex flex-col  bg-cover bg-center "
       style={{ backgroundImage: `url('/illustrations/${params.slug}.webp')` }}
     >
       {questions.length && currentIndex !== questions.length ? (
