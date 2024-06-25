@@ -78,6 +78,7 @@ export default function Page({ params }) {
                 </div>
               </div>
             </div>
+
             {/* Affichage de la catégorie */}
             <div className="text-blue-500 animate-pulse-slow text-4xl font-bold capitalize text-center">
               {slugToNameCategory(params.slug)}
