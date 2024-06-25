@@ -68,30 +68,29 @@ export default function Page({ params }) {
           {/* Affichage de la question actuelle */}
           <div className="lg:min-h-28 mt-3 grid bg-white p-4 rounded-lg  gap-5">
             {/* Affichage du compteur de questions */}
-            <div className="flex justify-center items-center ">
-              <div className="relative">
-                <div className="w-20 h-20 flex items-center justify-center rounded-full bg-primary text-white text-xl font-medium">
-                  <span className="countdown font-bold badge-score">
-                    <span style={{ "--value": currentIndex + 1 }}></span>/
-                    {questions.length}
-                  </span>
-                </div>
+
+            <div className="flex justify-center items-center my-4">
+              <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                <div
+                  className="bg-primary h-2.5 rounded-full"
+                  style={{
+                    width: `${((currentIndex + 1) / questions.length) * 100}%`,
+                  }}
+                ></div>
               </div>
             </div>
-
             {/* Affichage de la catégorie */}
             <div className="text-blue-500 animate-pulse-slow text-4xl font-bold capitalize text-center">
               {slugToNameCategory(params.slug)}
             </div>
-
             {/* Affichage de la question */}
             <AnimatePresence mode="wait">
               <motion.h1
-                initial={{ opacity: 0 }} // Commence avec une opacité de 0 pour un effet de fondu
-                animate={{ opacity: 1 }} // Anime vers une opacité de 1 pour un effet de fondu
-                exit={{ opacity: 0 }} // Sort avec un effet de fondu
+                initial={{ opacity: 0, x: 100 }} // Démarre à gauche avec x: -100
+                animate={{ opacity: 1, x: 0 }} // Anime vers la position initiale
+                exit={{ opacity: 0, x: -100 }} // Sort vers la gauche
                 transition={{
-                  duration: 1.5, // Durée de l'animation de fondu
+                  delay: 1.0, // Apparaît un par un, retardé par l'index
                 }}
                 key={currentIndex}
                 className="text-center lg:text-3xl mt-2 lg:mt-8 "
@@ -99,7 +98,6 @@ export default function Page({ params }) {
                 {questions[currentIndex].question}
               </motion.h1>
             </AnimatePresence>
-
             {/* Affichage des réponses */}
             <div className="flex flex-wrap justify-center gap-3">
               <Answers
@@ -144,7 +142,7 @@ const Answers = ({ answers, selectAnswer, selectedAnswer, id }) => {
           animate={{ opacity: 1, x: 0 }} // Anime vers la position initiale
           exit={{ opacity: 0, x: -100 }} // Sort vers la gauche
           transition={{
-            delay: i, // Apparaît un par un, retardé par l'index
+            delay: 1.0, // Apparaît un par un, retardé par l'index
           }}
           key={`${id}-${i}`}
           className={`transition max-w-80 w-full px-3 py-6 rounded-lg text-center cursor-pointer grid place-items-center ${
