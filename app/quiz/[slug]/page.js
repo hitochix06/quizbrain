@@ -59,83 +59,76 @@ export default function Page({ params }) {
   };
 
   return (
-    <div className="">
-      {/* Section gauche avec l'image de la catégorie */}
+    <div
+      className="col-span-12 lg:col-span-8 p-4 lg:px-24 flex flex-col justify-between bg-cover bg-center"
+      style={{ backgroundImage: `url('/illustrations/${params.slug}.webp')` }}
+    >
+      {questions.length && currentIndex !== questions.length ? (
+        <>
+          {/* Affichage du compteur de questions */}
+          <div className="text-end text-primary text-xl font-medium my-3 lg:my-6">
+            <span className="countdown font-bold badge-score">
+              <span style={{ "--value": currentIndex + 1 }}></span>/
+              {questions.length}
+            </span>
+          </div>
 
-      {/* Section droite avec les questions et les réponses */}
-      <div
-        className="col-span-12 lg:col-span-8 p-4 lg:px-24 flex flex-col justify-between bg-cover bg-center"
-        style={{ backgroundImage: `url('/illustrations/${params.slug}.webp')` }}
-      >
-        {questions.length && currentIndex !== questions.length ? (
-          <>
-            <div>
-              {/* Affichage du compteur de questions */}
-              <div className="text-end text-primary text-xl font-medium my-3 lg:my-6">
-                <span className="countdown font-bold badge-score">
-                  <span style={{ "--value": currentIndex + 1 }}></span>/
-                  {questions.length}
-                </span>
+          <div className="text-center ">
+            {/* Affichage de la catégorie */}
+            <div className="text-blue-500 animate-pulse-slow text-4xl font-bold capitalize ">
+              {slugToNameCategory(params.slug)}
+            </div>
+
+            {/* Affichage de la question actuelle */}
+            <div className="lg:min-h-28 mt-3 grid bg-white p-4 rounded-lg  gap-6">
+              <AnimatePresence mode="wait">
+                <motion.h1
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 260,
+                    damping: 20,
+                  }}
+                  key={currentIndex}
+                  className="text-center lg:text-3xl mt-2 lg:mt-8 "
+                >
+                  {questions[currentIndex].question}
+                </motion.h1>
+              </AnimatePresence>
+
+              {/* Affichage des réponses */}
+              <div className="flex flex-wrap justify-center gap-3">
+                <Answers
+                  id={questions[currentIndex]._id}
+                  answers={questions[currentIndex].allAnswers}
+                  selectedAnswer={selectedAnswer}
+                  selectAnswer={selectAnswer}
+                />
               </div>
-
-              <div className="text-center ">
-                {/* Affichage de la catégorie */}
-                <div className="text-blue-500 animate-pulse-slow text-4xl font-bold capitalize ">
-                  {slugToNameCategory(params.slug)}
-                </div>
-
-                {/* Affichage de la question actuelle */}
-                <div className="lg:min-h-28 mt-3 grid bg-white p-4 rounded-lg  gap-6">
-                  <AnimatePresence mode="wait">
-                    <motion.h1
-                      initial={{ opacity: 0, y: -20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 20 }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 260,
-                        damping: 20,
-                      }}
-                      key={currentIndex}
-                      className="text-center lg:text-3xl mt-2 lg:mt-8 "
-                    >
-                      {questions[currentIndex].question}
-                    </motion.h1>
-                  </AnimatePresence>
-
-                  {/* Affichage des réponses */}
-                  <div className="flex flex-wrap justify-center gap-3">
-                    <Answers
-                      id={questions[currentIndex]._id}
-                      answers={questions[currentIndex].allAnswers}
-                      selectedAnswer={selectedAnswer}
-                      selectAnswer={selectAnswer}
-                    />
-                  </div>
-                  {/* Bouton pour valider la réponse */}
-                  <div className="text-center my-8 ">
-                    {" "}
-                    {/* Modification de "text-end" à "text-center" pour centrer le bouton */}
-                    <div
-                      onClick={validateAnswer}
-                      className={`btn px-8 text-lg text-white ${
-                        selectedAnswer ? "bouton-primary" : "btn-disabled"
-                      }`}
-                    >
-                      Valider
-                    </div>
-                  </div>
+              {/* Bouton pour valider la réponse */}
+              <div className="text-center my-8 ">
+                {" "}
+                {/* Modification de "text-end" à "text-center" pour centrer le bouton */}
+                <div
+                  onClick={validateAnswer}
+                  className={`btn px-8 text-lg text-white ${
+                    selectedAnswer ? "bouton-primary" : "btn-disabled"
+                  }`}
+                >
+                  Valider
                 </div>
               </div>
             </div>
-          </>
-        ) : (
-          // Affichage d'un spinner de chargement si les questions ne sont pas encore prêtes
-          <div className="grid place-items-center h-full">
-            <span className="loading loading-spinner loading-md mb-20"></span>
           </div>
-        )}
-      </div>
+        </>
+      ) : (
+        // Affichage d'un spinner de chargement si les questions ne sont pas encore prêtes
+        <div className="grid place-items-center h-full">
+          <span className="loading loading-spinner loading-md mb-20"></span>
+        </div>
+      )}
     </div>
   );
 }
