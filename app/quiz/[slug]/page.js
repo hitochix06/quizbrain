@@ -139,11 +139,11 @@ const Answers = ({ answers, selectAnswer, selectedAnswer, id }) => {
     <AnimatePresence mode="wait">
       {answers.map((answer, i) => (
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, x: 100 }} // Démarre à gauche avec x: -100
+          animate={{ opacity: 1, x: 0 }} // Anime vers la position initiale
+          exit={{ opacity: 0, x: -100 }} // Sort vers la gauche
           transition={{
-            delay: 0.15 * i,
+            delay: i, // Apparaît un par un, retardé par l'index
           }}
           key={`${id}-${i}`}
           className={`transition max-w-80 w-full px-3 py-6 rounded-lg text-center cursor-pointer grid place-items-center ${
