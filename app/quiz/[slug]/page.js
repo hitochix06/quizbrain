@@ -82,15 +82,15 @@ export default function Page({ params }) {
             <div className="text-blue-500 animate-pulse-slow text-4xl font-bold capitalize text-center">
               {slugToNameCategory(params.slug)}
             </div>
+
+            {/* Affichage de la question */}
             <AnimatePresence mode="wait">
               <motion.h1
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0 }} // Commence avec une opacité de 0 pour un effet de fondu
+                animate={{ opacity: 1 }} // Anime vers une opacité de 1 pour un effet de fondu
+                exit={{ opacity: 0 }} // Sort avec un effet de fondu
                 transition={{
-                  type: "spring",
-                  stiffness: 260,
-                  damping: 20,
+                  duration: 1.5, // Durée de l'animation de fondu
                 }}
                 key={currentIndex}
                 className="text-center lg:text-3xl mt-2 lg:mt-8 "
