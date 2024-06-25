@@ -65,14 +65,6 @@ export default function Page({ params }) {
     >
       {questions.length && currentIndex !== questions.length ? (
         <>
-          {/* Affichage du compteur de questions */}
-          <div className="text-end text-primary text-xl font-medium my-3 lg:my-6">
-            <span className="countdown font-bold badge-score">
-              <span style={{ "--value": currentIndex + 1 }}></span>/
-              {questions.length}
-            </span>
-          </div>
-
           <div className="text-center ">
             {/* Affichage de la catégorie */}
             <div className="text-blue-500 animate-pulse-slow text-4xl font-bold capitalize ">
@@ -80,7 +72,35 @@ export default function Page({ params }) {
             </div>
 
             {/* Affichage de la question actuelle */}
-            <div className="lg:min-h-28 mt-3 grid bg-white p-4 rounded-lg  gap-6">
+            <div className="lg:min-h-28 mt-3 grid bg-white p-4 rounded-lg  gap-5">
+              {/* Affichage du compteur de questions */}
+
+              <div className="flex justify-center items-center my-3 lg:my-6">
+                <div className="relative">
+                  <div className="w-20 h-20 flex items-center justify-center rounded-full bg-primary text-white text-xl font-medium">
+                    <span className="countdown font-bold badge-score">
+                      <span style={{ "--value": currentIndex + 1 }}></span>/
+                      {questions.length}
+                    </span>
+                  </div>
+                  <div
+                    className="absolute inset-0 rounded-full border-4 border-primary"
+                    style={{ transform: "rotate(-90deg)" }}
+                  >
+                    <svg className="w-full h-full">
+                      <circle
+                        cx="50%"
+                        cy="50%"
+                        r="45%"
+                        stroke="currentColor"
+                        strokeWidth="2.8%"
+                        fill="none"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
               <AnimatePresence mode="wait">
                 <motion.h1
                   initial={{ opacity: 0, y: -20 }}
